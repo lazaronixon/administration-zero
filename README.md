@@ -1,28 +1,37 @@
-# AdministrationZero
+# Administration Zero
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/administration_zero`. To experiment with that code, run `bin/console` for an interactive prompt.
+The purpose of administration zero is to generate a pre-built administration panel into a rails application.
 
-TODO: Delete this and the text above, and describe your gem
+## Features
+
+- [Beautiful interface](https://github.com/tabler/tabler)
+- [Paginated results](https://github.com/ddnexus/pagy)
+- [Sortable and filterable](https://github.com/activerecord-hackery/ransack)
+- [Exportable data](https://github.com/westonganger/spreadsheet_architect)
+- Easy authentication system
+- Scaffolds
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'administration-zero'
+gem "authentication-zero"
 ```
 
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install administration-zero
+Then run `bundle install`
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+$ rails generate administration:install
+```
+
+Then run `bundle install` again, now you're ready to generate your scaffolds.
+
+```
+$ rails generate administration:resource posts
+```
 
 ## Development
 
