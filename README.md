@@ -33,7 +33,12 @@ $ rails generate model posts title:string body:text published:boolean
 $ rails generate admin:install
 ```
 
-Then run `bundle install` again, now you're ready to generate your admin scaffolds.
+Then run `bundle install` again
+
+Then run `rails db:seed`, you can access the admin panel in `/admin`, using `email: "admin@example.com", password: "Password9957"`
+
+
+Now you're ready to generate your admin scaffolds.
 
 ```
 $ rails generate admin:scaffold posts title:string body:text published:boolean
