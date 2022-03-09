@@ -44,6 +44,10 @@ module Admin
         directory "mailers", "app/mailers"
       end
 
+      def create_images
+        directory "images", "app/assets/images"
+      end
+
       def add_routes
         route "resource  :password_reset", namespace: :admin
         route "resources :users", namespace: :admin
