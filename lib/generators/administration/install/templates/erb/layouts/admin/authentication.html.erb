@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title><%= title %></title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= render "stylesheet_link_tags" %>
+  </head>
+
+  <body class="border-top-wide border-primary d-flex flex-column">
+    <div class="page page-center">
+      <div class="page page-center">
+        <div class="container-tight py-4">
+          <div class="text-center mb-4">
+            <%= link_to admin_sign_in_path, class: "navbar-brand navbar-brand-autodark" do %>
+              <%= image_tag "admin/logo.svg", height: 36 %>
+            <% end %>
+          </div>
+          <div class="text-center mb-2">
+            <%= render "flash_messages" %>
+          </div>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <%= render "javascript_tags" %>
+  </body>
+</html>

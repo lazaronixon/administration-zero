@@ -1,0 +1,23 @@
+<!-- Tabler Core -->
+<script src="https://unpkg.com/@tabler/core@1.0.0-beta9/dist/js/tabler.min.js"></script>
+
+<!-- bring back data-confirm -->
+<script>
+  document.addEventListener("click", (event) => {
+    if (!event.target.matches("[data-confirm]")) return;
+    if (!window.confirm(event.target.dataset["confirm"])) event.preventDefault();
+  });
+</script>
+
+<!-- validation rails -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".field_with_errors").forEach((element) => {
+      const field = element.firstChild;
+      field.classList.add("is-invalid");
+
+      element.parentNode.insertBefore(field, element);
+      element.parentNode.removeChild(element);
+    })
+  });
+</script>

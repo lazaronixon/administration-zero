@@ -1,0 +1,12 @@
+<%= content_for :title, title %>
+
+<div class="col">
+  <div class="mb-1">
+    <ol class="breadcrumb" aria-label="breadcrumbs">
+      <%= yield %>
+    </ol>
+  </div>
+  <h2 class="page-title">
+    <span class="text-truncate"><%= title %></span>
+  </h2>
+</div>

@@ -1,0 +1,17 @@
+<%= render "page_header" do %>
+  <%= render "page_header_breadcrumb", title: "Edit Admin User" do %>
+    <li class="breadcrumb-item"><%= link_to "Admin", admin_path %></li>
+    <li class="breadcrumb-item"><%= link_to "Admin Users", admin_users_path %></li>
+    <li class="breadcrumb-item"><%= link_to @admin_user.email, @admin_user %></li>
+  <% end %>
+<% end %>
+
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body">
+        <%= render "form", admin_user: @admin_user %>
+      </div>
+    </div>
+  </div>
+</div>

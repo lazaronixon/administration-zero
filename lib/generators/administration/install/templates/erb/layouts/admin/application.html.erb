@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title><%= title %></title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= render "stylesheet_link_tags" %>
+  </head>
+
+  <body>
+    <%= render "primary_navbar" %>
+    <%= render "secondary_navbar" %>
+
+    <div class="page">
+      <div class="page-wrapper">
+        <%= yield %>
+        <%= render "footer" %>
+      </div>
+    </div>
+
+    <%= render "javascript_tags" %>
+  </body>
+</html>

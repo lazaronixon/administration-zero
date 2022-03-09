@@ -1,0 +1,23 @@
+<%= form_with(url: admin_password_reset_path, method: :patch, class: "card card-md") do |form| %>
+  <div class="card-body">
+    <h2 class="card-title text-center mb-4">Reset password</h2>
+
+    <%= hidden_field_tag :token, params[:token] %>
+
+    <div class="mb-3">
+      <%= form.label :password, "New password", class: "form-label" %>
+      <%= form.password_field :password, required: true, autofocus: true, autocomplete: "new-password", class: "form-control" %>
+      <%= tag.div @admin_user.errors[:password].first, class: "invalid-feedback d-block" %>
+    </div>
+
+    <div>
+      <%= form.label :password_confirmation, "Confirm new password", class: "form-label" %>
+      <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control" %>
+      <%= tag.div @admin_user.errors[:password_confirmation].first, class: "invalid-feedback d-block" %>
+    </div>
+
+    <div class="form-footer">
+      <%= form.submit "Save changes", class: "btn btn-primary w-100" %>
+    </div>
+  </div>
+<% end %>
