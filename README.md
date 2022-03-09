@@ -2,6 +2,8 @@
 
 The purpose of administration zero is to generate a pre-built administration panel into a rails application.
 
+<img src=".documentation/screenshot.png" alt="Demo" style="max-width: 100%;">
+
 ## Features
 
 - [Beautiful interface](https://github.com/tabler/tabler)
