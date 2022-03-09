@@ -1,5 +1,0 @@
-Description:
-    Explain the generator
-
-Example:
-    bin/rails generate administration:resource model

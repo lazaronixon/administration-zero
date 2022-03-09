@@ -1,8 +1,8 @@
 require "rails/generators/resource_helpers"
 
-module Administration
+module Admin
   module Generators
-    class ResourceGenerator < Rails::Generators::NamedBase
+    class ScaffoldGenerator < Rails::Generators::NamedBase
       include Rails::Generators::ResourceHelpers
 
       argument :attributes, type: :array, default: [], banner: "field:type field:type"

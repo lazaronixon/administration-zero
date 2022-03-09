@@ -1,6 +1,6 @@
 require "rails/generators/active_record"
 
-module Administration
+module Admin
   module Generators
     class InstallGenerator < Rails::Generators::Base
       include ActiveRecord::Generators::Migration
@@ -48,7 +48,7 @@ module Administration
         route "delete 'sign_out', to: 'sessions#destroy'", namespace: :admin
         route "post   'sign_in',  to: 'sessions#create'", namespace: :admin
         route "get    'sign_in',  to: 'sessions#new'", namespace: :admin
-        route "get    '/',        to: 'home#index'", namespace: :admin      
+        route "get    '/',        to: 'home#index'", namespace: :admin
       end
 
       def create_test_files

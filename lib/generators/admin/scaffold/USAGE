@@ -1,0 +1,5 @@
+Description:
+    Explain the generator
+
+Example:
+    bin/rails generate admin:scaffold model field:type field:type
