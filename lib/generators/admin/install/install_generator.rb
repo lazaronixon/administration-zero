@@ -15,7 +15,7 @@ module Admin
       end
 
       def create_db_files
-        copy_file "db/seeds.rb", "db/seeds.rb", force: true
+        copy_file "seeds.rb", "db/seeds.rb", force: true
         migration_template "migrations/create_admin_users.rb", "#{db_migrate_path}/create_admin_users.rb"
       end
 
