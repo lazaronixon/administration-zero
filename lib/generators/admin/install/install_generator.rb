@@ -19,7 +19,9 @@ module Admin
       end
 
       def create_models
-        directory "models", "app/models"
+        directory "models/admin", "app/models/admin"
+        copy_file "models/admin_user.rb", "app/models/admin_user.rb"
+        copy_file "models/application_record.rb", "app/models/application_record.rb", force: true
       end
 
       def create_fixture_file
