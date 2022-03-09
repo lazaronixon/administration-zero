@@ -14,7 +14,8 @@ module Admin
         gem "spreadsheet_architect", comment: "Spreadsheet Architect is a library that allows you to create XLSX, ODS, or CSV spreadsheets super easily [https://github.com/westonganger/spreadsheet_architect]"
       end
 
-      def create_migrations
+      def create_db_files
+        copy_file "db/seeds.rb", "db/seeds.rb", force: true
         migration_template "migrations/create_admin_users.rb", "#{db_migrate_path}/create_admin_users.rb"
       end
 
