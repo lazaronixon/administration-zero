@@ -37,6 +37,7 @@
             <table class="table table-vcenter card-table table-striped">
               <thead>
                 <tr>
+                  <th><%= sort_link @search, :id %></th>
                   <th><%= sort_link @search, :email %></th>
                   <th><%= sort_link @search, :created_at %></th>
                   <th></th>
@@ -45,6 +46,7 @@
               <tbody>
                 <% @admin_users.each do |admin_user| %>
                   <tr>
+                    <td><%= link_to admin_user.id, admin_user %></td>
                     <td><%= admin_user.email %></td>
                     <td><%= l(admin_user.created_at, format: :long) %></td>
                     <td>
