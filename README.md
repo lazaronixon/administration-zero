@@ -27,10 +27,10 @@ Then run `bundle install`
 $ rails generate administration:install
 ```
 
-Then run `bundle install` again, now you're ready to generate your scaffolds.
+Then run `bundle install` again, now you're ready to generate your admin scaffolds.
 
 ```
-$ rails generate administration:resource posts
+$ rails generate administration:resource posts title:string body:text published:boolean
 ```
 
 ## Development
