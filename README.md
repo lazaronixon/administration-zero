@@ -9,7 +9,7 @@ The purpose of administration zero is to generate a pre-built administration pan
 - [Sortable and filterable](https://github.com/activerecord-hackery/ransack)
 - [Exportable data](https://github.com/westonganger/spreadsheet_architect)
 - Easy authentication system
-- Scaffolds
+- Admin scaffolds
 
 ## Installation
 
