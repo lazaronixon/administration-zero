@@ -21,6 +21,12 @@ gem "authentication-zero"
 
 Then run `bundle install`
 
+You'll need to create a model to be administrated, if you don't have one. for this example let's use the following:
+
+```
+$ rails generate model posts title:string body:text published:boolean
+```
+
 ## Usage
 
 ```
