@@ -18,7 +18,7 @@ The purpose of administration zero is to generate a pre-built administration pan
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "authentication-zero"
+gem "administration-zero"
 ```
 
 Then run `bundle install`
