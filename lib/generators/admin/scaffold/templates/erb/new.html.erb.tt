@@ -1,9 +1,16 @@
-<h1>New <%= human_name.downcase %></h1>
+<%%= render "page_header" do %>
+  <%%= render "page_header_breadcrumb", title: "New <%= human_name.downcase %>" do %>
+    <li class="breadcrumb-item"><%%= link_to "Admin", admin_path %></li>
+    <li class="breadcrumb-item"><%%= link_to "<%= human_name.pluralize %>", <%= index_helper(type: :path) %> %></li>
+  <%% end %>
+<%% end %>
 
-<%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
-
-<br>
-
-<div>
-  <%%= link_to "Back to <%= human_name.pluralize.downcase %>", <%= index_helper(type: :path) %> %>
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body">
+        <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
+      </div>
+    </div>
+  </div>
 </div>

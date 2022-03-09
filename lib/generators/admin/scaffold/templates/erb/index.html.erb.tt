@@ -1,14 +1,77 @@
-<p style="color: green"><%%= notice %></p>
-
-<h1><%= human_name.pluralize %></h1>
-
-<div id="<%= plural_table_name %>">
-  <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
-    <%%= render <%= singular_table_name %> %>
-    <p>
-      <%%= link_to "Show this <%= human_name.downcase %>", <%= model_resource_name(singular_table_name) %> %>
-    </p>
+<%%= render "page_header" do %>
+  <%%= render "page_header_breadcrumb", title: "<%= human_name.pluralize %>" do %>
+    <li class="breadcrumb-item"><%%= link_to "Admin", admin_path %></li>
   <%% end %>
-</div>
 
-<%%= link_to "New <%= human_name.downcase %>", <%= new_helper(type: :path) %> %>
+  <%%= render "page_header_actions" do %>
+    <%%= link_to "New <%= human_name.downcase %>", <%= new_helper(type: :path) %>, class: "btn btn-primary" %>
+  <%% end %>
+<%% end %>
+
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="row gy-3">
+      <div class="col-md-4 col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Filters</h3>
+          </div>
+          <%%= search_form_for [:admin, @search], class: "card-body" do |f| %>
+            <%%# f.label :name_cont, class: "form-label" %>
+            <%%# f.text_field :name_cont, class: "form-control mb-3" %>
+
+            <%%= f.submit "Filter", class: "btn btn-primary" %>
+            <%%= link_to "Clear Filter", <%= index_helper(type: :path) %>, class: "btn btn-light" %>
+          <%% end %>
+        </div>
+      </div>
+      <div class="col-md-8 col-lg-9 order-md-first">
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table table-vcenter card-table table-striped">
+              <thead>
+                <tr>
+<% attributes.each do |attribute| -%>
+                  <th><%= attribute.human_name %></th>
+<% end -%>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+                  <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+<% if attribute.attachment? -%>
+                    <td><%%= link_to <%= singular_name %>.<%= attribute.column_name %>.filename, <%= singular_name %>.<%= attribute.column_name %> if <%= singular_name %>.<%= attribute.column_name %>.attached? %></td>
+<% elsif attribute.attachments? -%>
+                  <%% <%= singular_name %>.<%= attribute.column_name %>.each do |<%= attribute.singular_name %>| %>
+                    <td><%%= link_to <%= attribute.singular_name %>.filename, <%= attribute.singular_name %> %></td>
+                  <%% end %>
+<% else -%>
+                    <td><%%= <%= singular_name %>.<%= attribute.column_name %> %></td>
+<% end -%>
+<% end -%>
+                    <td>
+                      <%%= link_to "View", <%= model_resource_name %>, class: "btn btn-light btn-sm" %>
+                      <%%= link_to "Edit", <%= edit_helper(singular_table_name, type: :path) %>, class: "btn btn-light btn-sm" %>
+                      <%%= button_to "Delete", <%= model_resource_name %>, method: :delete, form_class: "d-inline", class: "btn btn-light btn-sm", data: { confirm: "Are you sure ?" } %>
+                    </td>
+                  </tr>
+                <%% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer d-flex align-items-center fs-5">
+            <div>
+              Download: <%%= link_to "CSV", <%= index_helper(type: :path) %>(format: :csv, q: request.params[:q]) %>
+            </div>
+            <div class="ms-auto d-flex align-items-center gap-2">
+              <%%== pagy_info @pagy %>
+              <%%= render "pagination", pagy: @pagy %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

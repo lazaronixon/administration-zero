@@ -1,10 +1,10 @@
 <%= render "page_header" do %>
-  <%= render "page_header_breadcrumb", title: "Admin Users" do %>
+  <%= render "page_header_breadcrumb", title: "Admin users" do %>
     <li class="breadcrumb-item"><%= link_to "Admin", admin_path %></li>
   <% end %>
 
   <%= render "page_header_actions" do %>
-    <%= link_to "New Admin User", new_admin_user_path, class: "btn btn-primary" %>
+    <%= link_to "New admin user", new_admin_user_path, class: "btn btn-primary" %>
   <% end %>
 <% end %>
 
@@ -37,7 +37,6 @@
             <table class="table table-vcenter card-table table-striped">
               <thead>
                 <tr>
-                  <th><%= sort_link @search, :id %></th>
                   <th><%= sort_link @search, :email %></th>
                   <th><%= sort_link @search, :created_at %></th>
                   <th></th>
@@ -46,7 +45,6 @@
               <tbody>
                 <% @admin_users.each do |admin_user| %>
                   <tr>
-                    <td><%= link_to admin_user.id, admin_user %></td>
                     <td><%= admin_user.email %></td>
                     <td><%= l(admin_user.created_at, format: :long) %></td>
                     <td>

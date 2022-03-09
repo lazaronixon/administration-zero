@@ -7,12 +7,12 @@ class Admin::UsersTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit admin_users_url
-    assert_selector "h2", text: "Admin Users"
+    assert_selector "h2", text: "Admin users"
   end
 
   test "should create user" do
     visit admin_users_url
-    click_on "New Admin User"
+    click_on "New admin user"
 
     fill_in "Email", with: "lazaronixon@hey.com"
     fill_in "Password", with: "Secret1*3*5*"
@@ -24,7 +24,7 @@ class Admin::UsersTest < ApplicationSystemTestCase
 
   test "should update User" do
     visit admin_user_url(@admin_user)
-    click_on "Edit Admin User"
+    click_on "Edit admin user"
 
     fill_in "Email", with: @admin_user.email
     fill_in "Password", with: "NewSecret1*3*5*"
@@ -36,7 +36,7 @@ class Admin::UsersTest < ApplicationSystemTestCase
 
   test "should destroy User" do
     visit admin_user_url(@admin_user)
-    page.accept_confirm { click_on "Delete Admin User" }
+    page.accept_confirm { click_on "Delete admin user" }
 
     assert_text "User was successfully destroyed"
   end

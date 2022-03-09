@@ -2,7 +2,7 @@
   <div class="form-group row mb-2">
     <%= form.label :email, class: "form-label col-md-3 col-form-label" %>
     <div class="col-md px-0">
-      <%= form.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      <%= form.email_field :email, autocomplete: "email", class: "form-control" %>
       <%= tag.div admin_user.errors[:email].first, class: "invalid-feedback" %>
     </div>
   </div>

@@ -1,10 +1,37 @@
-<p style="color: green"><%%= notice %></p>
+<%%= render "page_header" do %>
+  <%%= render "page_header_breadcrumb", title: "Showing <%= human_name.downcase %>" do %>
+    <li class="breadcrumb-item"><%%= link_to "Admin", admin_path %></li>
+    <li class="breadcrumb-item"><%%= link_to "<%= human_name.pluralize %>", <%= index_helper(type: :path) %> %></li>
+  <%% end %>
 
-<%%= render @<%= singular_table_name %> %>
+  <%%= render "page_header_actions" do %>
+    <%%= link_to "Edit <%= human_name.downcase %>", <%= edit_helper(type: :path) %>, class: "btn btn-primary" %>
+    <%%= button_to "Delete <%= human_name.downcase %>", <%= model_resource_name(prefix: "@") %>, method: :delete, form_class: "d-inline", class: "btn btn-light", data: { confirm: "Are you sure ?" } %>
+  <%% end %>
+<%% end %>
 
-<div>
-  <%%= link_to "Edit this <%= human_name.downcase %>", <%= edit_helper(type: :path) %> %> |
-  <%%= link_to "Back to <%= human_name.pluralize.downcase %>", <%= index_helper(type: :path) %> %>
-
-  <%%= button_to "Destroy this <%= human_name.downcase %>", <%= model_resource_name(prefix: "@") %>, method: :delete %>
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= human_name %> details</h3>
+      </div>
+      <div class="card-body">
+        <dl class="row">
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <dt class="col-md-3"><%= attribute.human_name %></dt>
+<% if attribute.attachment? -%>
+          <dd class="col-md-9"><%%= link_to <%= singular_name %>.<%= attribute.column_name %>.filename, <%= singular_name %>.<%= attribute.column_name %> if <%= singular_name %>.<%= attribute.column_name %>.attached? %></dd>
+<% elsif attribute.attachments? -%>
+    <%% <%= singular_name %>.<%= attribute.column_name %>.each do |<%= attribute.singular_name %>| %>
+          <dd class="col-md-9"><%%= link_to <%= attribute.singular_name %>.filename, <%= attribute.singular_name %> %></dd>
+    <%% end %>
+<% else -%>
+          <dd class="col-md-9"><%%= @<%= singular_name %>.<%= attribute.column_name %> %></dd>
+<% end -%>
+<% end -%>
+        </dl>
+      </div>
+    </div>
+  </div>
 </div>

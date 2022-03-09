@@ -1,37 +1,41 @@
 <%%= form_with(model: <%= model_resource_name %>) do |form| %>
-  <%% if <%= singular_table_name %>.errors.any? %>
-    <div style="color: red">
-      <h2><%%= pluralize(<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h2>
-
-      <ul>
-        <%% <%= singular_table_name %>.errors.each do |error| %>
-          <li><%%= error.full_message %></li>
-        <%% end %>
-      </ul>
-    </div>
-  <%% end %>
-
 <% attributes.each do |attribute| -%>
-  <div>
+  <div class="form-group row mb-2">
 <% if attribute.password_digest? -%>
-    <%%= form.label :password, style: "display: block" %>
-    <%%= form.password_field :password %>
+    <%%= form.label :password, class: "form-label col-md-3 col-form-label" %>
+    <div class="col-md px-0">
+      <%%= form.password_field :password, required: true, autocomplete: "new-password", class: "form-control" %>
+      <%%= tag.div <%= singular_name %>.errors[:password].first, class: "invalid-feedback" %>
+    </div>
   </div>
 
-  <div>
-    <%%= form.label :password_confirmation, style: "display: block" %>
-    <%%= form.password_field :password_confirmation %>
+  <div class="col-md px-0">
+    <%%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control" %>
+    <%%= tag.div <%= singular_name %>.errors[:password_confirmation].first, class: "invalid-feedback" %>
 <% elsif attribute.attachments? -%>
-    <%%= form.label :<%= attribute.column_name %>, style: "display: block" %>
-    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true %>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label col-md-3 col-form-label" %>
+    <div class="col-md px-0">
+      <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true, class: "form-control" %>
+      <%%= tag.div <%= singular_name %>.errors[:<%= attribute.column_name %>].first, class: "invalid-feedback" %>
+    </div>
+<% elsif attribute.field_type == :check_box -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-check-label col-md-3 col-form-label" %>
+    <div class="col-md px-0">
+      <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-check-input" %>
+      <%%= tag.div <%= singular_name %>.errors[:<%= attribute.column_name %>].first, class: "invalid-feedback" %>
+    </div>
 <% else -%>
-    <%%= form.label :<%= attribute.column_name %>, style: "display: block" %>
-    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %> %>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label col-md-3 col-form-label" %>
+    <div class="col-md px-0">
+      <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-control" %>
+      <%%= tag.div <%= singular_name %>.errors[:<%= attribute.column_name %>].first, class: "invalid-feedback" %>
+    </div>
 <% end -%>
   </div>
 
 <% end -%>
-  <div>
-    <%%= form.submit %>
+  <div class="form-footer">
+    <%%= form.submit class: "btn btn-primary" %>
+    <%%= link_to "Cancel", <%= index_helper(type: :path) %>, class: "btn btn-light" %>
   </div>
 <%% end %>

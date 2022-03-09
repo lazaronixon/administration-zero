@@ -1,18 +1,18 @@
 require "application_system_test_case"
 
-<% module_namespacing do -%>
 class <%= class_name.pluralize %>Test < ApplicationSystemTestCase
   setup do
+    @admin_user = admin_sign_in_as(admin_users(:lazaro_nixon))
     @<%= singular_table_name %> = <%= fixture_name %>(:one)
   end
 
   test "visiting the index" do
-    visit <%= plural_table_name %>_url
-    assert_selector "h1", text: "<%= human_name.pluralize %>"
+    visit <%= index_helper(type: :url) %>
+    assert_selector "h2", text: "<%= human_name.pluralize %>"
   end
 
   test "should create <%= human_name.downcase %>" do
-    visit <%= plural_table_name %>_url
+    visit <%= index_helper(type: :url) %>
     click_on "New <%= human_name.downcase %>"
 
     <%- attributes_hash.each do |attr, value| -%>
@@ -25,12 +25,11 @@ class <%= class_name.pluralize %>Test < ApplicationSystemTestCase
     click_on "Create <%= human_name %>"
 
     assert_text "<%= human_name %> was successfully created"
-    click_on "Back"
   end
 
   test "should update <%= human_name %>" do
-    visit <%= singular_table_name %>_url(@<%= singular_table_name %>)
-    click_on "Edit this <%= human_name.downcase %>", match: :first
+    visit <%= show_helper(type: :url) %>
+    click_on "Edit <%= human_name.downcase %>", match: :first
 
     <%- attributes_hash.each do |attr, value| -%>
     <%- if boolean?(attr) -%>
@@ -42,14 +41,12 @@ class <%= class_name.pluralize %>Test < ApplicationSystemTestCase
     click_on "Update <%= human_name %>"
 
     assert_text "<%= human_name %> was successfully updated"
-    click_on "Back"
   end
 
   test "should destroy <%= human_name %>" do
-    visit <%= singular_table_name %>_url(@<%= singular_table_name %>)
-    click_on "Destroy this <%= human_name.downcase %>", match: :first
+    visit <%= show_helper(type: :url) %>
+    page.accept_confirm { click_on "Delete <%= human_name.downcase %>" }
 
     assert_text "<%= human_name %> was successfully destroyed"
   end
 end
-<% end -%>
