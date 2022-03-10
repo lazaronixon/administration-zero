@@ -29,6 +29,8 @@ You'll need to create a model to be administrated, if you don't have one. for th
 $ rails generate model posts title:string body:text published:boolean
 ```
 
+Then run `rails db:migrate`
+
 ## Usage
 
 ```
@@ -36,6 +38,8 @@ $ rails generate admin:install
 ```
 
 Then run `bundle install` again
+
+Then run `rails db:migrate`
 
 Then run `rails db:seed`, you can access the admin panel in `/admin`, using `email: "admin@example.com", password: "Password9957"`
 
