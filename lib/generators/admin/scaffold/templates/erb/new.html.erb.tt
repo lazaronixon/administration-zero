@@ -6,7 +6,7 @@
 <%% end %>
 
 <div class="page-body">
-  <div class="container-fluid">
+  <div class="container-xl">
     <div class="card">
       <div class="card-body">
         <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
