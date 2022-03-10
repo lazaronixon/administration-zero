@@ -4,7 +4,7 @@
   <% end %>
 
   <%= render "page_header_actions" do %>
-    <%= link_to "Filters", "#offcanvasFilters", "data-bs-toggle": "offcanvas", class: "btn btn-light" %>
+    <%= link_to "Filters", "#offcanvas_filters", "data-bs-toggle": "offcanvas", class: "btn btn-light" %>
     <%= link_to "New admin user", new_admin_user_path, class: "btn btn-primary" %>
   <% end %>
 <% end %>
@@ -19,7 +19,7 @@
               <th><%= sort_link @search, :id %></th>
               <th><%= sort_link @search, :email %></th>
               <th><%= sort_link @search, :created_at %></th>
-              <th></th>
+              <th class="w-1"></th>
             </tr>
           </thead>
           <tbody>
@@ -39,9 +39,11 @@
         </table>
       </div>
       <div class="card-footer d-flex align-items-center fs-5">
-        <div>Download: <%= link_to "CSV", admin_users_path(format: :csv, q: request.params[:q]) %></div>
-        <div class="ms-auto d-flex align-items-center gap-2">
-          <div class="d-none d-md-flex"><%== pagy_info @pagy %></div>
+        <div class="d-none d-md-block">
+          <div>Download: <%= link_to "CSV", admin_posts_path(format: :csv, q: request.params[:q]) %></div>
+          <%== pagy_info @pagy %>
+        </div>
+        <div class="ms-auto">
           <%= render "pagination", pagy: @pagy %>
         </div>
       </div>
@@ -49,7 +51,7 @@
   </div>
 </div>
 
-<div id="offcanvasFilters" tabindex="-1" class="offcanvas offcanvas-end">
+<div id="offcanvas_filters" tabindex="-1" class="offcanvas offcanvas-end">
   <div class="offcanvas-header">
     <h2 class="offcanvas-title">Filters</h2>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>

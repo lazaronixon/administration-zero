@@ -4,7 +4,7 @@
   <%% end %>
 
   <%%= render "page_header_actions" do %>
-    <%%= link_to "Filters", "#offcanvasFilters", "data-bs-toggle": "offcanvas", class: "btn btn-light" %>
+    <%%= link_to "Filters", "#offcanvas_filters", "data-bs-toggle": "offcanvas", class: "btn btn-light" %>
     <%%= link_to "New <%= human_name.downcase %>", <%= new_helper(type: :path) %>, class: "btn btn-primary" %>
   <%% end %>
 <%% end %>
@@ -19,7 +19,7 @@
 <% attributes.each do |attribute| -%>
               <th><%%= sort_link @search, :<%= attribute.column_name %> %></th>
 <% end -%>
-              <th></th>
+              <th class="w-1"></th>
             </tr>
           </thead>
           <tbody>
@@ -47,9 +47,11 @@
         </table>
       </div>
       <div class="card-footer d-flex align-items-center fs-5">
-        <div>Download: <%%= link_to "CSV", <%= index_helper(type: :path) %>(format: :csv, q: request.params[:q]) %></div>
-        <div class="ms-auto d-flex align-items-center gap-2">
-          <div class="d-none d-md-flex"><%%== pagy_info @pagy %></div>
+        <div class="d-none d-md-block">
+          <div>Download: <%%= link_to "CSV", <%= index_helper(type: :path) %>(format: :csv, q: request.params[:q]) %></div>
+          <%%== pagy_info @pagy %>
+        </div>
+        <div class="ms-auto">
           <%%= render "pagination", pagy: @pagy %>
         </div>
       </div>
@@ -57,7 +59,7 @@
   </div>
 </div>
 
-<div id="offcanvasFilters" tabindex="-1" class="offcanvas offcanvas-end">
+<div id="offcanvas_filters" tabindex="-1" class="offcanvas offcanvas-end">
   <div class="offcanvas-header">
     <h2 class="offcanvas-title">Filters</h2>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
