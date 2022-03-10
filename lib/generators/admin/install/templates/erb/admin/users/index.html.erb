@@ -4,70 +4,67 @@
   <% end %>
 
   <%= render "page_header_actions" do %>
+    <%= link_to "Filters", "#offcanvasFilters", "data-bs-toggle": "offcanvas", class: "btn btn-light" %>
     <%= link_to "New admin user", new_admin_user_path, class: "btn btn-primary" %>
   <% end %>
 <% end %>
 
 <div class="page-body">
   <div class="container-fluid">
-    <div class="row gy-3">
-      <div class="col-lg-4 col-xl-3">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Filters</h3>
-          </div>
-          <%= search_form_for @search, class: "card-body" do |f| %>
-            <%= f.label :email_cont, class: "form-label" %>
-            <%= f.text_field :email_cont, class: "form-control mb-3" %>
-
-            <%= f.label :created_at, class: "form-label" %>
-            <div class="d-flex gap-1 mb-3">
-              <%= f.date_field :created_at_gteq, class: "form-control" %>
-              <%= f.date_field :created_at_lteq, class: "form-control" %>
-            </div>
-
-            <%= f.submit "Filter", class: "btn btn-primary" %>
-            <%= link_to "Clear Filter", admin_users_path, class: "btn btn-light" %>
-          <% end %>
-        </div>
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table table-vcenter table-nowrap card-table table-striped">
+          <thead>
+            <tr>
+              <th><%= sort_link @search, :id %></th>
+              <th><%= sort_link @search, :email %></th>
+              <th><%= sort_link @search, :created_at %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @admin_users.each do |admin_user| %>
+              <tr>
+                <td><%= link_to admin_user.id, admin_user %></td>
+                <td><%= admin_user.email %></td>
+                <td><%= l(admin_user.created_at, format: :long) %></td>
+                <td>
+                  <%= link_to "View", admin_user, class: "btn btn-light btn-sm" %>
+                  <%= link_to "Edit", edit_admin_user_path(admin_user), class: "btn btn-light btn-sm" %>
+                  <%= button_to "Delete", admin_user, method: :delete, data: { confirm: "Are you sure ?" }, form_class: "d-inline", class: "btn btn-light btn-sm" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
-      <div class="col-lg-8 col-xl-9 order-lg-first">
-        <div class="card">
-          <div class="table-responsive">
-            <table class="table table-vcenter table-nowrap card-table table-striped">
-              <thead>
-                <tr>
-                  <th><%= sort_link @search, :id %></th>
-                  <th><%= sort_link @search, :email %></th>
-                  <th><%= sort_link @search, :created_at %></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @admin_users.each do |admin_user| %>
-                  <tr>
-                    <td><%= link_to admin_user.id, admin_user %></td>
-                    <td><%= admin_user.email %></td>
-                    <td><%= l(admin_user.created_at, format: :long) %></td>
-                    <td>
-                      <%= link_to "View", admin_user, class: "btn btn-light btn-sm" %>
-                      <%= link_to "Edit", edit_admin_user_path(admin_user), class: "btn btn-light btn-sm" %>
-                      <%= button_to "Delete", admin_user, method: :delete, data: { confirm: "Are you sure ?" }, form_class: "d-inline", class: "btn btn-light btn-sm" %>
-                    </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-          <div class="card-footer d-flex align-items-center fs-5">
-            <div>Download: <%= link_to "CSV", admin_users_path(format: :csv, q: request.params[:q]) %></div>
-            <div class="ms-auto d-flex align-items-center gap-2">
-              <div class="d-none d-md-flex"><%== pagy_info @pagy %></div>
-              <%= render "pagination", pagy: @pagy %>
-            </div>
-          </div>
+      <div class="card-footer d-flex align-items-center fs-5">
+        <div>Download: <%= link_to "CSV", admin_users_path(format: :csv, q: request.params[:q]) %></div>
+        <div class="ms-auto d-flex align-items-center gap-2">
+          <div class="d-none d-md-flex"><%== pagy_info @pagy %></div>
+          <%= render "pagination", pagy: @pagy %>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div id="offcanvasFilters" tabindex="-1" class="offcanvas offcanvas-end">
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title">Filters</h2>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <%= search_form_for @search, class: "offcanvas-body" do |f| %>
+    <%= f.label :email_cont, class: "form-label" %>
+    <%= f.text_field :email_cont, class: "form-control mb-3" %>
+
+    <%= f.label :created_at, class: "form-label" %>
+    <div class="d-flex gap-1 mb-3">
+      <%= f.date_field :created_at_gteq, class: "form-control" %>
+      <%= f.date_field :created_at_lteq, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Filter", class: "btn btn-primary" %>
+    <%= link_to "Clear Filter", admin_users_path, class: "btn btn-light" %>
+  <% end %>
 </div>
