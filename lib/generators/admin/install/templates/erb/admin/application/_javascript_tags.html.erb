@@ -21,22 +21,13 @@
   });
 </script>
 
-<!--
-###########################################################################################################################
-                                          Old school stimulus example
-         <div data-controller="toasts" data-toats-type="notice" data-toasts-message="User created successfully"></div>
-###########################################################################################################################
--->
-<!--
+<!-- flash message -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("[data-controller='toasts']").forEach((thiz) => {
-      if (thiz.dataset["toastsType"] === "notice") {
-        $(document).Toasts("create", { body: thiz.dataset["toastsMessage"], class: "bg-success", title: "Success", autohide: true, delay: 7000 })
-      } else (thiz.dataset["toastsType"] === "alert") {
-        $(document).Toasts("create", { body: thiz.dataset["toastsMessage"], class: "bg-danger", title: "Error", autohide: true, delay: 7000 })
-      }
-    })
-  })
+    const selector = "[data-controller='flash-message']";
+
+    document.querySelectorAll(selector).forEach((thiz) => {
+      new bootstrap.Toast(thiz).show();
+    });
+  });
 </script>
--->

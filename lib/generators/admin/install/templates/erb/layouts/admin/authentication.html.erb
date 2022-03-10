@@ -21,14 +21,12 @@
               <%= image_tag "admin/logo.svg", height: 36 %>
             <% end %>
           </div>
-          <div class="text-center mb-2">
-            <%= render "flash_messages" %>
-          </div>
           <%= yield %>
         </div>
       </div>
     </div>
 
+    <%= render "flash_messages" %>
     <%= render "javascript_tags" %>
   </body>
 </html>
