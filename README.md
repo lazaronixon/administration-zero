@@ -2,7 +2,7 @@
 
 The purpose of administration zero is to generate a pre-built administration panel into a rails application.
 
-<img src=".documentation/screenshot.png" alt="Demo" style="max-width: 100%;">
+<img src=".documentation/screenshot.png" alt="screenshot" style="max-width: 100%;">
 
 ## Features
 
@@ -10,6 +10,7 @@ The purpose of administration zero is to generate a pre-built administration pan
 - [Paginated results](https://github.com/ddnexus/pagy)
 - [Sortable and filterable](https://github.com/activerecord-hackery/ransack)
 - [Exportable data](https://github.com/westonganger/spreadsheet_architect)
+- [Toastr for flash messages](https://getbootstrap.com/docs/5.1/components/toasts)
 - Easy authentication system
 - Admin scaffolds
 
@@ -29,8 +30,6 @@ You'll need to create a model to be administrated, if you don't have one. for th
 $ rails generate model posts title:string body:text published:boolean
 ```
 
-Then run `rails db:migrate`
-
 ## Usage
 
 ```
@@ -39,9 +38,7 @@ $ rails generate admin:install
 
 Then run `bundle install` again
 
-Then run `rails db:migrate`
-
-Then run `rails db:seed`, you can access the admin panel in `/admin`, using `email: "admin@example.com", password: "Password9957"`
+Then run `rails db:migrate db:seed`, you can access the admin panel in `/admin`, using `email: "admin@example.com", password: "Password9957"`
 
 
 Now you're ready to generate your admin scaffolds.
