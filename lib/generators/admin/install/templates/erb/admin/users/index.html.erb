@@ -60,11 +60,9 @@
             </table>
           </div>
           <div class="card-footer d-flex align-items-center fs-5">
-            <div>
-              Download: <%= link_to "CSV", admin_users_path(format: :csv, q: request.params[:q]) %>
-            </div>
+            <div>Download: <%= link_to "CSV", admin_users_path(format: :csv, q: request.params[:q]) %></div>
             <div class="ms-auto d-flex align-items-center gap-2">
-              <%== pagy_info @pagy %>
+              <div class="d-none d-md-flex"><%== pagy_info @pagy %></div>
               <%= render "pagination", pagy: @pagy %>
             </div>
           </div>

@@ -1,5 +1,5 @@
 <% if flash[:notice] %>
-  <div class="position-fixed start-50 translate-middle-x" style="z-index: 1030; top: 120px;">
+  <div class="position-fixed start-50 translate-middle-x" style="z-index: 1030; top: 8rem;">
     <div class="toast hide text-center text-white bg-success border-0" data-controller="flash-message">
       <div class="toast-body">
         <%= flash[:notice] %>
@@ -9,7 +9,7 @@
 <% end %>
 
 <% if flash[:alert] %>
-  <div class="position-fixed start-50 translate-middle-x" style="z-index: 1030; top: 120px;">
+  <div class="position-fixed start-50 translate-middle-x" style="z-index: 1030; top: 8rem;">
     <div class="toast hide text-center text-white bg-danger border-0" data-controller="flash-message">
       <div class="toast-body">
         <%= flash[:alert] %>
