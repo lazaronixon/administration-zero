@@ -13,11 +13,30 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".field_with_errors").forEach((element) => {
-      const field = element.firstChild;
-      field.classList.add("is-invalid");
+      element.firstChild.classList.add("is-invalid");
 
-      element.parentNode.insertBefore(field, element);
+      element.parentNode.insertBefore(element.firstChild, element);
       element.parentNode.removeChild(element);
-    })
+    });
   });
 </script>
+
+<!--
+###########################################################################################################################
+                                          Old school stimulus example
+         <div data-controller="toasts" data-toats-type="notice" data-toasts-message="User created successfully"></div>
+###########################################################################################################################
+-->
+<!--
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-controller='toasts']").forEach((thiz) => {
+      if (thiz.dataset["toastsType"] === "notice") {
+        $(document).Toasts("create", { body: thiz.dataset["toastsMessage"], class: "bg-success", title: "Success", autohide: true, delay: 7000 })
+      } else (thiz.dataset["toastsType"] === "alert") {
+        $(document).Toasts("create", { body: thiz.dataset["toastsMessage"], class: "bg-danger", title: "Error", autohide: true, delay: 7000 })
+      }
+    })
+  })
+</script>
+-->
