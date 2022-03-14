@@ -40,7 +40,7 @@
       </div>
       <div class="card-footer d-flex align-items-center fs-5">
         <div class="d-none d-md-block">
-          <div>Download: <%= link_to "CSV", admin_posts_path(format: :csv, q: request.params[:q]) %></div>
+          <div>Download: <%= link_to "CSV", admin_users_path(format: :csv, q: request.params[:q]) %></div>
           <%== pagy_info @pagy %>
         </div>
         <div class="ms-auto">
