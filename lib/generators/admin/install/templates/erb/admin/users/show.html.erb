@@ -6,7 +6,7 @@
 
   <%= render "page_header_actions" do %>
     <%= link_to "Edit admin user", edit_admin_user_path(@admin_user), class: "btn btn-primary" %>
-    <%= button_to "Delete admin user", @admin_user, method: :delete, data: { confirm: "Are you sure ?" }, form_class: "d-inline", class: "btn btn-light" %>
+    <%= button_to "Delete admin user", @admin_user, method: :delete, "data-confirm": "Are you sure?", form_class: "d-inline", class: "btn btn-light" %>
   <% end %>
 <% end %>
 

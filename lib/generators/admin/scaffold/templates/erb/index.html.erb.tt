@@ -39,7 +39,7 @@
                 <td>
                   <%%= link_to "View", <%= model_resource_name %>, class: "btn btn-light btn-sm" %>
                   <%%= link_to "Edit", <%= edit_helper(singular_table_name, type: :path) %>, class: "btn btn-light btn-sm" %>
-                  <%%= button_to "Delete", <%= model_resource_name %>, method: :delete, form_class: "d-inline", class: "btn btn-light btn-sm", data: { confirm: "Are you sure ?" } %>
+                  <%%= button_to "Delete", <%= model_resource_name %>, method: :delete, "data-confirm": "Are you sure?", form_class: "d-inline", class: "btn btn-light btn-sm" %>
                 </td>
               </tr>
             <%% end %>
