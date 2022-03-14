@@ -27,13 +27,13 @@ Then run `bundle install`
 You'll need to create a model to be administrated, if you don't have one. for this example let's use the following:
 
 ```
-$ rails generate model posts title:string body:text published:boolean
+rails generate model posts title:string body:text published:boolean
 ```
 
 ## Usage
 
 ```
-$ rails generate admin:install
+rails generate admin:install
 ```
 
 Then run `bundle install` again
@@ -44,7 +44,7 @@ Then run `rails db:migrate db:seed`, you can access the admin panel in `/admin`,
 Now you're ready to generate your admin scaffolds.
 
 ```
-$ rails generate admin:scaffold posts title:string body:text published:boolean
+rails generate admin:scaffold posts title:string body:text published:boolean
 ```
 
 ## Development
