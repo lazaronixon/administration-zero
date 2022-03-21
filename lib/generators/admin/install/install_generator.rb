@@ -21,12 +21,11 @@ module Admin
 
       def create_models
         directory "models/admin", "app/models/admin"
-        copy_file "models/admin_user.rb", "app/models/admin_user.rb"
         copy_file "models/application_record.rb", "app/models/application_record.rb", force: true
       end
 
       def create_fixture_file
-        copy_file "test_unit/admin_users.yml", "test/fixtures/admin_users.yml"
+        copy_file "test_unit/admin_users.yml", "test/fixtures/admin/users.yml"
       end
 
       def create_controllers

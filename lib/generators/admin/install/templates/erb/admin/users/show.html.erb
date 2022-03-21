@@ -1,12 +1,12 @@
 <%= render "page_header" do %>
   <%= render "page_header_breadcrumb", title: @admin_user.email do %>
     <li class="breadcrumb-item"><%= link_to "Admin", admin_path %></li>
-    <li class="breadcrumb-item"><%= link_to "Admin users", admin_users_path %></li>
+    <li class="breadcrumb-item"><%= link_to "Users", admin_users_path %></li>
   <% end %>
 
   <%= render "page_header_actions" do %>
-    <%= link_to "Edit admin user", edit_admin_user_path(@admin_user), class: "btn btn-primary" %>
-    <%= button_to "Delete admin user", @admin_user, method: :delete, "data-confirm": "Are you sure?", form_class: "d-inline", class: "btn btn-light" %>
+    <%= link_to "Edit user", edit_admin_user_path(@admin_user), class: "btn btn-primary" %>
+    <%= button_to "Delete user", @admin_user, method: :delete, "data-confirm": "Are you sure?", form_class: "d-inline", class: "btn btn-light" %>
   <% end %>
 <% end %>
 
@@ -14,7 +14,7 @@
   <div class="container-xl">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Admin user details</h3>
+        <h3 class="card-title">User details</h3>
       </div>
       <div class="card-body">
         <dl class="row">

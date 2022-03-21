@@ -1,11 +1,9 @@
-<% flash.each do |type, message| %>
-  <% if ["notice", "alert"].include?(type) %>
-    <div class="position-fixed start-50 translate-middle-x" style="z-index: 1030; top: 8rem;">
-      <div class="toast hide text-center text-white bg-dark border-0" data-controller="flash-message">
-        <div class="toast-body">
-          <%= message %>
-        </div>
+<% flash.each do |name, message| %>
+  <div class="position-fixed start-50 translate-middle-x" style="z-index: 1030; top: 8rem;">
+    <div class="toast hide text-center text-white bg-dark border-0" data-controller="flash-message">
+      <div class="toast-body">
+        <%= message %>
       </div>
     </div>
-  <% end %>
+  </div>
 <% end %>

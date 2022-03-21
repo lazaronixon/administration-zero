@@ -1,11 +1,11 @@
 <%= render "page_header" do %>
-  <%= render "page_header_breadcrumb", title: "Admin users" do %>
+  <%= render "page_header_breadcrumb", title: "Users" do %>
     <li class="breadcrumb-item"><%= link_to "Admin", admin_path %></li>
   <% end %>
 
   <%= render "page_header_actions" do %>
     <%= link_to "Filters", "#offcanvas_filters", "data-bs-toggle": "offcanvas", class: "btn btn-light" %>
-    <%= link_to "New admin user", new_admin_user_path, class: "btn btn-primary" %>
+    <%= link_to "New user", new_admin_user_path, class: "btn btn-primary" %>
   <% end %>
 <% end %>
 

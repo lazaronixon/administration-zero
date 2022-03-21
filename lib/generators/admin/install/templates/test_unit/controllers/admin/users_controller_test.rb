@@ -16,11 +16,11 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create admin_user" do
-    assert_difference("AdminUser.count") do
+    assert_difference("Admin::User.count") do
       post admin_users_url, params: { admin_user: { email: "lazaronixon@hey.com", password: "Secret1*3*5*", password_confirmation: "Secret1*3*5*" } }
     end
 
-    assert_redirected_to admin_user_url(AdminUser.last)
+    assert_redirected_to admin_user_url(Admin::User.last)
   end
 
   test "should show admin_user" do
@@ -39,7 +39,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy admin_user" do
-    assert_difference("AdminUser.count", -1) do
+    assert_difference("Admin::User.count", -1) do
       delete admin_user_url(@admin_user)
     end
 

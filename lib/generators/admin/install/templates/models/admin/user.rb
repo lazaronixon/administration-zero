@@ -1,6 +1,4 @@
-class AdminUser < ApplicationRecord
-  include SpreadsheetArchitect
-
+class Admin::User < Admin::ApplicationRecord
   has_secure_password
 
   validates :email, presence: true, uniqueness: true

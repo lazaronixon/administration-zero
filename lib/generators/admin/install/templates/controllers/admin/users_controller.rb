@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::ApplicationController
   before_action :set_admin_user, only: %i[ show edit update destroy ]
 
   def index
-    @search = AdminUser.all.ransack(params[:q])
+    @search = Admin::User.all.ransack(params[:q])
 
     respond_to do |format|
       format.html { @pagy, @admin_users = pagy(@search.result) }
@@ -14,14 +14,14 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def new
-    @admin_user = AdminUser.new
+    @admin_user = Admin::User.new
   end
 
   def edit
   end
 
   def create
-    @admin_user = AdminUser.new(admin_user_params)
+    @admin_user = Admin::User.new(admin_user_params)
 
     if @admin_user.save
       redirect_to @admin_user, notice: "User was successfully created."
@@ -45,7 +45,7 @@ class Admin::UsersController < Admin::ApplicationController
 
   private
     def set_admin_user
-      @admin_user = AdminUser.find(params[:id])
+      @admin_user = Admin::User.find(params[:id])
     end
 
     def admin_user_params

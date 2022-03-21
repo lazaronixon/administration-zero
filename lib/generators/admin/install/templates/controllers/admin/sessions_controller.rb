@@ -4,11 +4,11 @@ class Admin::SessionsController < Admin::ApplicationController
   layout "admin/authentication"
 
   def new
-    @admin_user = AdminUser.new
+    @admin_user = Admin::User.new
   end
 
   def create
-    @admin_user = AdminUser.find_by(email: params[:email])
+    @admin_user = Admin::User.find_by(email: params[:email])
 
     if @admin_user && @admin_user.authenticate(params[:password])
       session[:admin_user_id] = @admin_user.id

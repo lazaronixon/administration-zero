@@ -1,7 +1,7 @@
 <%= render "page_header" do %>
-  <%= render "page_header_breadcrumb", title: "Editing admin user" do %>
+  <%= render "page_header_breadcrumb", title: "Editing user" do %>
     <li class="breadcrumb-item"><%= link_to "Admin", admin_path %></li>
-    <li class="breadcrumb-item"><%= link_to "Admin users", admin_users_path %></li>
+    <li class="breadcrumb-item"><%= link_to "Users", admin_users_path %></li>
     <li class="breadcrumb-item"><%= link_to @admin_user.email, @admin_user %></li>
   <% end %>
 <% end %>

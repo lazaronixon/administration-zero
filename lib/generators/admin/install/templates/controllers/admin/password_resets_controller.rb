@@ -12,7 +12,7 @@ class Admin::PasswordResetsController < Admin::ApplicationController
   end
 
   def create
-    if @admin_user = AdminUser.find_by(email: params[:email])
+    if @admin_user = Admin::User.find_by(email: params[:email])
       Admin::UserMailer.with(admin_user: @admin_user).password_reset_provision.deliver_later
       redirect_to admin_sign_in_path, notice: "Check your email for reset instructions"
     else
@@ -30,7 +30,7 @@ class Admin::PasswordResetsController < Admin::ApplicationController
 
   private
     def set_admin_user
-      @admin_user = AdminUser.find_signed!(params[:token], purpose: :password_reset)
+      @admin_user = Admin::User.find_signed!(params[:token], purpose: :password_reset)
     rescue
       redirect_to new_admin_password_reset_path, alert: "That password reset link is invalid"
     end
