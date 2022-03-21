@@ -17,7 +17,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create admin_user" do
     assert_difference("AdminUser.count") do
-      post admin_users_url, params: { admin_user: { email: "lazaronixon@hey.com", password: "Secret1*3*5*", password_confirmation: "Secret1*3*5*"} }
+      post admin_users_url, params: { admin_user: { email: "lazaronixon@hey.com", password: "Secret1*3*5*", password_confirmation: "Secret1*3*5*" } }
     end
 
     assert_redirected_to admin_user_url(AdminUser.last)

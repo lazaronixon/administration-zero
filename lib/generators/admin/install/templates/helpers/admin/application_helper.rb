@@ -2,7 +2,7 @@ module Admin::ApplicationHelper
   include Pagy::Frontend
 
   def title
-    content_for(:title) || Rails.application.class.to_s.split('::').first
+    content_for(:title) || Rails.application.class.to_s.split("::").first
   end
 
   def active_nav_item(controller, actions = %w( index show new edit create update))

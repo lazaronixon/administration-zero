@@ -10,6 +10,6 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     click_on "Sign in"
     assert_current_path admin_url
 
-    return user
+    user
   end
 end
