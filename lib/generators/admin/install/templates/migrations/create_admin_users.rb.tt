@@ -1,8 +1,8 @@
 class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Migration.current_version %>]
   def change
     create_table :admin_users do |t|
-      t.string :email
-      t.string :password_digest
+      t.string :email, null: false
+      t.string :password_digest, null: false
 
       t.timestamps
     end
