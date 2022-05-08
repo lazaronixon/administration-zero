@@ -18,7 +18,7 @@ class Admin::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should send a password reset email" do
-    assert_enqueued_email_with Admin::UserMailer, :password_reset_provision, args: { admin_user: @admin_user } do
+    assert_enqueued_email_with Admin::UserMailer, :password_reset, args: { admin_user: @admin_user } do
       post admin_password_reset_url, params: { email: @admin_user.email }
     end
 

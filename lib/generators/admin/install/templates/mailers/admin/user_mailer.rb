@@ -1,5 +1,5 @@
 class Admin::UserMailer < Admin::ApplicationMailer
-  def password_reset_provision
+  def password_reset
     @admin_user = params[:admin_user]
     @signed_id = @admin_user.signed_id(purpose: :password_reset, expires_in: 20.minutes)
 
