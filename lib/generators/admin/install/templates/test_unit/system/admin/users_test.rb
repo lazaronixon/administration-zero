@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class Admin::UsersTest < ApplicationSystemTestCase
   setup do
-    @admin_user = admin_sign_in_as(admin_users(:lazaro_nixon))
+    @admin_user = sign_in_admin_as(admin_users(:lazaro_nixon))
   end
 
   test "visiting the index" do

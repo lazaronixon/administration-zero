@@ -28,7 +28,7 @@ class Admin::SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should sign out" do
-    admin_sign_in_as @admin_user
+    sign_in_admin_as @admin_user
 
     delete admin_sign_out_url
     assert_redirected_to admin_sign_in_url

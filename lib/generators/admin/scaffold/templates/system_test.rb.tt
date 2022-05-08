@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class <%= class_name.pluralize %>Test < ApplicationSystemTestCase
   setup do
-    @admin_user = admin_sign_in_as(admin_users(:lazaro_nixon))
+    @admin_user = sign_in_admin_as(admin_users(:lazaro_nixon))
     @<%= singular_table_name %> = <%= fixture_name %>(:one)
   end
 

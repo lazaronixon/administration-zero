@@ -15,7 +15,7 @@ class Admin::SessionsTest < ApplicationSystemTestCase
   end
 
   test "signing out" do
-    admin_sign_in_as @admin_user
+    sign_in_admin_as @admin_user
     click_on "Paweł Kuna"
     click_on "Logout"
 
