@@ -5,6 +5,6 @@ class Admin::User < Admin::ApplicationRecord
   validates :password, allow_nil: true, length: { minimum: 12 }, format: { with: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/ }
 
   before_validation do
-    self.email = email.downcase.strip
+    self.email = email.try(:downcase).try(:strip)
   end
 end
