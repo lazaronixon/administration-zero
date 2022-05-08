@@ -1,6 +1,6 @@
 <%= form_with(url: admin_sign_in_path, class: "card card-md") do |form| %>
   <div class="card-body">
-    <h2 class="card-title text-center mb-4">Login to your account</h2>
+    <h1 class="card-title text-center mb-4">Login to your account</h1>
     <div class="mb-3">
       <%= form.label :email, class: "form-label" %>
       <%= form.email_field :email, value: params[:email_hint], placeholder: "Enter email", autofocus: true, required: true, autocomplete: "email", class:"form-control" %>
