@@ -11,8 +11,7 @@ class Admin::SessionsController < Admin::ApplicationController
     @admin_user = Admin::User.find_by(email: params[:email])
 
     if @admin_user && @admin_user.authenticate(params[:password])
-      session[:admin_user_id] = @admin_user.id
-      redirect_to admin_path
+      session[:admin_user_id] = @admin_user.id; redirect_to(admin_path)
     else
       redirect_to admin_sign_in_path(email_hint: params[:email]), alert: "That email or password is incorrect"
     end
