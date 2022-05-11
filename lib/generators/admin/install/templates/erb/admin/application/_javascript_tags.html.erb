@@ -1,6 +1,20 @@
 <!-- Tabler Core -->
 <script src="https://unpkg.com/@tabler/core@1.0.0-beta9/dist/js/tabler.min.js"></script>
 
+<!-- set time zone cookie -->
+<script>
+  const { timeZone } = new Intl.DateTimeFormat().resolvedOptions();
+  setCookie("time_zone", timeZone);
+
+  function setCookie(name, value) {
+    const twentyYears  = 20 * 365 * 24 * 60 * 60 * 1000;
+    const body = [ name, value ].map(encodeURIComponent).join("=");
+    const expires = new Date(Date.now() + twentyYears).toUTCString();
+    const cookie = `${body}; path=/; expires=${expires}`;
+    document.cookie = cookie;
+  }
+</script>
+
 <!-- bring back data-confirm -->
 <script>
   document.addEventListener("click", (event) => {

@@ -11,6 +11,7 @@ The purpose of administration zero is to generate a pre-built administration pan
 - [Sortable and filterable](https://github.com/activerecord-hackery/ransack)
 - [Exportable data](https://github.com/westonganger/spreadsheet_architect)
 - [Toastr for flash messages](https://getbootstrap.com/docs/5.1/components/toasts)
+- Determine time zone automatically
 - Easy authentication system
 - Admin scaffolds
 
