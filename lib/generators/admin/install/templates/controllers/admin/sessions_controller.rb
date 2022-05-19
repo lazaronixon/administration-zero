@@ -1,4 +1,4 @@
-class Admin::SessionsController < Admin::ApplicationController
+class Admin::SessionsController < Admin::BaseController
   skip_before_action :authenticate, only: %i[ new create ]
 
   layout "admin/authentication"

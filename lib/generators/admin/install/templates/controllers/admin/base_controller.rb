@@ -1,4 +1,4 @@
-class Admin::ApplicationController < ActionController::Base
+class Admin::BaseController < ActionController::Base
   include Pagy::Backend
 
   before_action :set_time_zone

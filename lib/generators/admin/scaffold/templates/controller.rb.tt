@@ -1,4 +1,4 @@
-class <%= controller_class_name %>Controller < Admin::ApplicationController
+class <%= controller_class_name %>Controller < Admin::BaseController
   before_action :set_<%= singular_table_name %>, only: %i[ show edit update destroy ]
 
   def index

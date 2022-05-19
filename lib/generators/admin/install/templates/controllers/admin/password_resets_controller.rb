@@ -1,4 +1,4 @@
-class Admin::PasswordResetsController < Admin::ApplicationController
+class Admin::PasswordResetsController < Admin::BaseController
   skip_before_action :authenticate
 
   before_action :set_admin_user, only: %i[ edit update ]
