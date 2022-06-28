@@ -19,6 +19,6 @@ class Admin::SessionsTest < ApplicationSystemTestCase
     click_on "Paweł Kuna"
     click_on "Logout"
 
-    assert_selector "h2", text: "Login to your account"
+    assert_selector "h1", text: "Login to your account"
   end
 end

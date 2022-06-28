@@ -7,7 +7,7 @@ class Admin::UsersTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit admin_users_url
-    assert_selector "h2", text: "Users"
+    assert_selector "h1", text: "Users"
   end
 
   test "should create user" do
