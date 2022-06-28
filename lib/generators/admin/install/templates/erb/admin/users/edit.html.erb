@@ -2,7 +2,7 @@
   <%= render "page_header_breadcrumb", title: "Editing user" do %>
     <li class="breadcrumb-item"><%= link_to "Admin", admin_path %></li>
     <li class="breadcrumb-item"><%= link_to "Users", admin_users_path %></li>
-    <li class="breadcrumb-item"><%= link_to @admin_user.email, @admin_user %></li>
+    <li class="breadcrumb-item"><%= link_to @user.email, @user %></li>
   <% end %>
 <% end %>
 
@@ -10,7 +10,7 @@
   <div class="container-xl">
     <div class="card">
       <div class="card-body">
-        <%= render "form", admin_user: @admin_user %>
+        <%= render "form", user: @user %>
       </div>
     </div>
   </div>

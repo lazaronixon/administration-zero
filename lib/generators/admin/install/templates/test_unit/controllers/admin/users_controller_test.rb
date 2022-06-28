@@ -2,7 +2,7 @@ require "test_helper"
 
 class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @admin_user = sign_in_admin_as(admin_users(:lazaro_nixon))
+    @user = sign_in_admin_as(admin_users(:lazaro_nixon))
   end
 
   test "should get index" do
@@ -24,23 +24,23 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show admin_user" do
-    get admin_user_url(@admin_user)
+    get admin_user_url(@user)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_admin_user_url(@admin_user)
+    get edit_admin_user_url(@user)
     assert_response :success
   end
 
   test "should update admin_user" do
-    patch admin_user_url(@admin_user), params: { admin_user: { email: @admin_user.email, password: "NewSecret1*3*5*", password_confirmation: "NewSecret1*3*5*" } }
-    assert_redirected_to admin_user_url(@admin_user)
+    patch admin_user_url(@user), params: { admin_user: { email: @user.email, password: "NewSecret1*3*5*", password_confirmation: "NewSecret1*3*5*" } }
+    assert_redirected_to admin_user_url(@user)
   end
 
   test "should destroy admin_user" do
     assert_difference("Admin::User.count", -1) do
-      delete admin_user_url(@admin_user)
+      delete admin_user_url(@user)
     end
 
     assert_redirected_to admin_users_url

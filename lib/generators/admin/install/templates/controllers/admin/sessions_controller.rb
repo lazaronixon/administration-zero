@@ -4,14 +4,14 @@ class Admin::SessionsController < Admin::BaseController
   layout "admin/authentication"
 
   def new
-    @admin_user = Admin::User.new
+    @user = Admin::User.new
   end
 
   def create
-    @admin_user = Admin::User.find_by(email: params[:email])
+    @user = Admin::User.find_by(email: params[:email])
 
-    if @admin_user && @admin_user.authenticate(params[:password])
-      session[:admin_user_id] = @admin_user.id; redirect_to(admin_path)
+    if @user && @user.authenticate(params[:password])
+      session[:admin_user_id] = @user.id; redirect_to(admin_path)
     else
       redirect_to admin_sign_in_path(email_hint: params[:email]), alert: "That email or password is incorrect"
     end

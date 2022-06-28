@@ -2,15 +2,15 @@ require "application_system_test_case"
 
 class Admin::PasswordResetsTest < ApplicationSystemTestCase
   setup do
-    @admin_user = admin_users(:lazaro_nixon)
-    @sid = @admin_user.signed_id(purpose: :password_reset, expires_in: 20.minutes)
+    @user = admin_users(:lazaro_nixon)
+    @sid = @user.signed_id(purpose: :password_reset, expires_in: 20.minutes)
   end
 
   test "sending a password reset email" do
     visit admin_sign_in_url
     click_on "I forgot password"
 
-    fill_in "Email", with: @admin_user.email
+    fill_in "Email", with: @user.email
     click_on "Send me new password"
 
     assert_text "Check your email for reset instructions"

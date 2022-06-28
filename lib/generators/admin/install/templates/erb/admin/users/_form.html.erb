@@ -1,9 +1,9 @@
-<%= form_with(model: admin_user) do |form| %>
+<%= form_with(model: user) do |form| %>
   <div class="form-group row mb-2">
     <%= form.label :email, class: "form-label col-md-3 col-form-label" %>
     <div class="col-md px-0">
       <%= form.email_field :email, autocomplete: "email", class: "form-control" %>
-      <%= tag.div admin_user.errors[:email].first, class: "invalid-feedback" %>
+      <%= tag.div user.errors[:email].first, class: "invalid-feedback" %>
     </div>
   </div>
 
@@ -11,7 +11,7 @@
     <%= form.label :password, class: "form-label col-md-3 col-form-label" %>
     <div class="col-md px-0">
       <%= form.password_field :password, required: true, autocomplete: "new-password", class: "form-control" %>
-      <%= tag.div admin_user.errors[:password].first, class: "invalid-feedback" %>
+      <%= tag.div user.errors[:password].first, class: "invalid-feedback" %>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
     <%= form.label :password_confirmation, class: "form-label col-md-3 col-form-label" %>
     <div class="col-md px-0">
       <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control" %>
-      <%= tag.div admin_user.errors[:password_confirmation].first, class: "invalid-feedback" %>
+      <%= tag.div user.errors[:password_confirmation].first, class: "invalid-feedback" %>
     </div>
   </div>
 

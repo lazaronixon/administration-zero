@@ -2,12 +2,12 @@ require "application_system_test_case"
 
 class Admin::SessionsTest < ApplicationSystemTestCase
   setup do
-    @admin_user = admin_users(:lazaro_nixon)
+    @user = admin_users(:lazaro_nixon)
   end
 
   test "signing in" do
     visit admin_sign_in_url
-    fill_in "Email", with: @admin_user.email
+    fill_in "Email", with: @user.email
     fill_in "Password", with: "Secret1*3*5*"
     click_on "Sign in"
 
@@ -15,7 +15,7 @@ class Admin::SessionsTest < ApplicationSystemTestCase
   end
 
   test "signing out" do
-    sign_in_admin_as @admin_user
+    sign_in_admin_as @user
     click_on "Paweł Kuna"
     click_on "Logout"
 

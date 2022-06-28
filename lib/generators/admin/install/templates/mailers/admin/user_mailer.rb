@@ -1,8 +1,8 @@
 class Admin::UserMailer < Admin::ApplicationMailer
   def password_reset
-    @admin_user = params[:admin_user]
-    @signed_id = @admin_user.signed_id(purpose: :password_reset, expires_in: 20.minutes)
+    @user = params[:user]
+    @signed_id = @user.signed_id(purpose: :password_reset, expires_in: 20.minutes)
 
-    mail to: @admin_user.email, subject: "Reset your password"
+    mail to: @user.email, subject: "Reset your password"
   end
 end

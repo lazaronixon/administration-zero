@@ -1,12 +1,12 @@
 <%= render "page_header" do %>
-  <%= render "page_header_breadcrumb", title: @admin_user.email do %>
+  <%= render "page_header_breadcrumb", title: @user.email do %>
     <li class="breadcrumb-item"><%= link_to "Admin", admin_path %></li>
     <li class="breadcrumb-item"><%= link_to "Users", admin_users_path %></li>
   <% end %>
 
   <%= render "page_header_actions" do %>
-    <%= link_to "Edit user", edit_admin_user_path(@admin_user), class: "btn btn-primary" %>
-    <%= button_to "Delete user", @admin_user, method: :delete, "data-confirm": "Are you sure?", form_class: "d-inline", class: "btn btn-light" %>
+    <%= link_to "Edit user", edit_admin_user_path(@user), class: "btn btn-primary" %>
+    <%= button_to "Delete user", @user, method: :delete, "data-confirm": "Are you sure?", form_class: "d-inline", class: "btn btn-light" %>
   <% end %>
 <% end %>
 
@@ -19,13 +19,13 @@
       <div class="card-body">
         <dl class="row">
           <dt class="col-md-3">Email</dt>
-          <dd class="col-md-9"><%= @admin_user.email %></dd>
+          <dd class="col-md-9"><%= @user.email %></dd>
 
           <dt class="col-md-3">Created at</dt>
-          <dd class="col-md-9"><%= l(@admin_user.created_at, format: :long) %></dd>
+          <dd class="col-md-9"><%= l(@user.created_at, format: :long) %></dd>
 
           <dt class="col-md-3">Updated at</dt>
-          <dd class="col-md-9"><%= l(@admin_user.updated_at, format: :long) %></dd>
+          <dd class="col-md-9"><%= l(@user.updated_at, format: :long) %></dd>
         </dl>
       </div>
     </div>

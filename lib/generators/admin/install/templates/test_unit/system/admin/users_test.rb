@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class Admin::UsersTest < ApplicationSystemTestCase
   setup do
-    @admin_user = sign_in_admin_as(admin_users(:lazaro_nixon))
+    @user = sign_in_admin_as(admin_users(:lazaro_nixon))
   end
 
   test "visiting the index" do
@@ -23,10 +23,10 @@ class Admin::UsersTest < ApplicationSystemTestCase
   end
 
   test "should update user" do
-    visit admin_user_url(@admin_user)
+    visit admin_user_url(@user)
     click_on "Edit user"
 
-    fill_in "Email", with: @admin_user.email
+    fill_in "Email", with: @user.email
     fill_in "Password", with: "NewSecret1*3*5*"
     fill_in "Password confirmation", with: "NewSecret1*3*5*"
     click_on "Update User"
@@ -35,7 +35,7 @@ class Admin::UsersTest < ApplicationSystemTestCase
   end
 
   test "should destroy user" do
-    visit admin_user_url(@admin_user)
+    visit admin_user_url(@user)
     page.accept_confirm { click_on "Delete user" }
 
     assert_text "User was successfully destroyed"

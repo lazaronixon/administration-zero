@@ -2,9 +2,9 @@ require "test_helper"
 
 class Admin::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @admin_user = admin_users(:lazaro_nixon)
-    @sid = @admin_user.signed_id(purpose: :password_reset, expires_in: 20.minutes)
-    @sid_exp = @admin_user.signed_id(purpose: :password_reset, expires_in: 0.minutes)
+    @user = admin_users(:lazaro_nixon)
+    @sid = @user.signed_id(purpose: :password_reset, expires_in: 20.minutes)
+    @sid_exp = @user.signed_id(purpose: :password_reset, expires_in: 0.minutes)
   end
 
   test "should get new" do
@@ -18,8 +18,8 @@ class Admin::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should send a password reset email" do
-    assert_enqueued_email_with Admin::UserMailer, :password_reset, args: { admin_user: @admin_user } do
-      post admin_password_reset_url, params: { email: @admin_user.email }
+    assert_enqueued_email_with Admin::UserMailer, :password_reset, args: { user: @user } do
+      post admin_password_reset_url, params: { email: @user.email }
     end
 
     assert_redirected_to admin_sign_in_url

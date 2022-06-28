@@ -7,13 +7,13 @@
     <div class="mb-3">
       <%= form.label :password, "New password", class: "form-label" %>
       <%= form.password_field :password, required: true, autofocus: true, autocomplete: "new-password", class: "form-control" %>
-      <%= tag.div @admin_user.errors[:password].first, class: "invalid-feedback d-block" %>
+      <%= tag.div @user.errors[:password].first, class: "invalid-feedback d-block" %>
     </div>
 
     <div>
       <%= form.label :password_confirmation, "Confirm new password", class: "form-label" %>
       <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control" %>
-      <%= tag.div @admin_user.errors[:password_confirmation].first, class: "invalid-feedback d-block" %>
+      <%= tag.div @user.errors[:password_confirmation].first, class: "invalid-feedback d-block" %>
     </div>
 
     <div class="form-footer">
