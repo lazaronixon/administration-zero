@@ -48,7 +48,7 @@
       </div>
       <div class="card-footer d-flex align-items-center fs-5">
         <div class="d-none d-md-block">
-          <div>Download: <%%= link_to "CSV", <%= index_helper(type: :path) %>(format: :csv, q: request.params[:q]) %></div>
+          <div>Download: <%%= link_to "CSV", url_for(format: :csv, q: request.params[:q]) %></div>
           <%%= raw pagy_info(@pagy) %>
         </div>
         <div class="ms-auto">
