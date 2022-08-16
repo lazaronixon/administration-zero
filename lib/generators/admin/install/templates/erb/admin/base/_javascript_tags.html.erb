@@ -1,47 +1,39 @@
 <!-- Tabler Core -->
 <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta11/dist/js/tabler.min.js"></script>
 
-<!-- set time zone cookie -->
-<script>
-  const { timeZone } = new Intl.DateTimeFormat().resolvedOptions();
-  setCookie("time_zone", timeZone);
-
-  function setCookie(name, value) {
-    const twentyYears  = 20 * 365 * 24 * 60 * 60 * 1000;
-    const body = [ name, value ].map(encodeURIComponent).join("=");
-    const expires = new Date(Date.now() + twentyYears).toUTCString();
-    const cookie = `${body}; path=/; expires=${expires}`;
-    document.cookie = cookie;
-  }
+<!-- Time zone cookie -->
+<script type="module">
+  import cookies from "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs"
+  const { timeZone } = new Intl.DateTimeFormat().resolvedOptions()
+  cookies.set("time_zone", timeZone, { expires: 365 })
 </script>
 
-<!-- bring back data-confirm -->
-<script>
+<!-- Data confirm -->
+<script type="module">
   document.addEventListener("click", (event) => {
-    if (!event.target.matches("[data-confirm]")) return;
-    if (!window.confirm(event.target.dataset["confirm"])) event.preventDefault();
-  });
+    if (!event.target.matches("[data-confirm]")) return
+    if (!window.confirm(event.target.dataset["confirm"])) event.preventDefault()
+  })
 </script>
 
-<!-- validation rails -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".field_with_errors").forEach((element) => {
-      element.firstChild.classList.add("is-invalid");
+<!-- Stimulus controllers -->
+<script type="module">
+  import { Application, Controller } from "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.1.0/dist/stimulus.min.js"
+  const stimulus = Application.start()
 
-      element.parentNode.insertBefore(element.firstChild, element);
-      element.parentNode.removeChild(element);
-    });
-  });
-</script>
+  stimulus.register("validation", class extends Controller {
+    connect() {
+      this.element.querySelectorAll(".field_with_errors").forEach((element) => {
+        element.firstChild.classList.add("is-invalid")
+        element.parentNode.insertBefore(element.firstChild, element)
+        element.parentNode.removeChild(element)
+      })
+    }
+  })
 
-<!-- flash message -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const selector = "[data-controller='flash-message']";
-
-    document.querySelectorAll(selector).forEach((thiz) => {
-      new bootstrap.Toast(thiz).show();
-    });
-  });
+  stimulus.register("flash-message", class extends Controller {
+    connect() {
+      new bootstrap.Toast(this.element).show()
+    }
+  })
 </script>
