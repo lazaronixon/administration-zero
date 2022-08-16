@@ -24,7 +24,7 @@ class Admin::PasswordResetsController < Admin::BaseController
     if @user.update(user_params)
       redirect_to admin_sign_in_path, notice: "Your password was reset successfully. Please sign in"
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to edit_admin_password_reset_path(token: params[:token]), alert: @user.errors.first.full_message
     end
   end
 
