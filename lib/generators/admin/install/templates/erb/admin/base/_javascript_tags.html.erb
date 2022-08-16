@@ -19,9 +19,9 @@
 <!-- Stimulus controllers -->
 <script type="module">
   import { Application, Controller } from "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.1.0/dist/stimulus.min.js"
-  const stimulus = Application.start()
+  window.Stimulus = Application.start()
 
-  stimulus.register("flash-message", class extends Controller {
+  Stimulus.register("flash-message", class extends Controller {
     connect() {
       new bootstrap.Toast(this.element).show()
     }
