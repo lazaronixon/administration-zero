@@ -4,7 +4,7 @@
   <% end %>
 
   <%= render "page_header_actions" do %>
-    <%= link_to "Filters", "#offcanvas_filters", "data-bs-toggle": "offcanvas", class: "btn btn-light" %>
+    <%= link_to "Filters", "#offcanvas_filters", "data-bs-toggle": "offcanvas", class: "btn btn-white" %>
     <%= link_to "New user", new_admin_user_path, class: "btn btn-primary" %>
   <% end %>
 <% end %>
@@ -29,9 +29,9 @@
                 <td><%= user.email %></td>
                 <td><%= l(user.created_at, format: :long) %></td>
                 <td>
-                  <%= link_to "View", user, class: "btn btn-light btn-sm" %>
-                  <%= link_to "Edit", edit_admin_user_path(user), class: "btn btn-light btn-sm" %>
-                  <%= button_to "Delete", user, method: :delete, "data-confirm": "Are you sure?", form_class: "d-inline", class: "btn btn-light btn-sm" %>
+                  <%= link_to "View", user, class: "btn btn-white btn-sm" %>
+                  <%= link_to "Edit", edit_admin_user_path(user), class: "btn btn-white btn-sm" %>
+                  <%= button_to "Delete", user, method: :delete, "data-confirm": "Are you sure?", form_class: "d-inline", class: "btn btn-white btn-sm" %>
                 </td>
               </tr>
             <% end %>
@@ -67,6 +67,6 @@
     </div>
 
     <%= f.submit "Filter", class: "btn btn-primary" %>
-    <%= link_to "Clear Filter", admin_users_path, class: "btn btn-light" %>
+    <%= link_to "Clear Filter", admin_users_path, class: "btn btn-white" %>
   <% end %>
 </div>

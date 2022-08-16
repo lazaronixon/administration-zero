@@ -36,6 +36,6 @@
 <% end -%>
   <div class="form-footer">
     <%%= form.submit class: "btn btn-primary" %>
-    <%%= link_to "Cancel", <%= index_helper(type: :path) %>, class: "btn btn-light" %>
+    <%%= link_to "Cancel", <%= index_helper(type: :path) %>, class: "btn btn-white" %>
   </div>
 <%% end %>
