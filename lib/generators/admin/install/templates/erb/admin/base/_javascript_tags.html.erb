@@ -21,16 +21,6 @@
   import { Application, Controller } from "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.1.0/dist/stimulus.min.js"
   const stimulus = Application.start()
 
-  stimulus.register("validation", class extends Controller {
-    connect() {
-      this.element.querySelectorAll(".field_with_errors").forEach((element) => {
-        element.firstChild.classList.add("is-invalid")
-        element.parentNode.insertBefore(element.firstChild, element)
-        element.parentNode.removeChild(element)
-      })
-    }
-  })
-
   stimulus.register("flash-message", class extends Controller {
     connect() {
       new bootstrap.Toast(this.element).show()

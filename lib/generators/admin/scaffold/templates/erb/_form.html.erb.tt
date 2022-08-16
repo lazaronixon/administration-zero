@@ -1,4 +1,4 @@
-<%%= form_with(model: <%= model_resource_name %>, html: { "data-controller": "validation" }) do |form| %>
+<%%= form_with(model: <%= model_resource_name %>) do |form| %>
 <% attributes.each do |attribute| -%>
   <div class="form-group row mb-2">
 <% if attribute.password_digest? -%>

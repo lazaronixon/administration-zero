@@ -7,6 +7,17 @@ module Admin
 
       source_root File.expand_path("templates", __dir__)
 
+      def add_field_error_proc
+        field_error_proc_code = <<~RUBY
+          # Provides an HTML generator for displaying errors that come from Active Model
+          config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+            raw Nokogiri::HTML.fragment(html_tag).child.add_class("is-invalid")
+          end
+        RUBY
+
+        environment field_error_proc_code
+      end
+
       def add_gems
         uncomment_lines "Gemfile", /"bcrypt"/
         gem "pagy", comment: "Use Pagy to add paginated results [https://github.com/ddnexus/pagy]"
