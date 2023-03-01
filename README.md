@@ -18,13 +18,9 @@ The purpose of administration zero is to generate a pre-built administration pan
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
 ```ruby
-gem "administration-zero"
+bundle add administration-zero
 ```
-
-Then run `bundle install`
 
 You'll need to create a model to be administrated, if you don't have one. for this example let's use the following:
 

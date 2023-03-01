@@ -13,7 +13,7 @@ class Admin::PasswordResetsController < Admin::BaseController
 
   def create
     if @user = Admin::User.find_by(email: params[:email])
-      Admin::UserMailer.with(user: @user).password_reset.deliver_later
+      send_password_reset_email
       redirect_to admin_sign_in_path, notice: "Check your email for reset instructions"
     else
       redirect_to new_admin_password_reset_path, alert: "Sorry, we didn't recognize that email address"
@@ -37,5 +37,9 @@ class Admin::PasswordResetsController < Admin::BaseController
 
     def user_params
       params.permit(:password, :password_confirmation)
+    end
+
+    def send_password_reset_email
+      Admin::UserMailer.with(user: @user).password_reset.deliver_later
     end
 end

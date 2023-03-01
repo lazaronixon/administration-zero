@@ -1,5 +1,5 @@
 <!-- Tabler Core -->
-<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta11/dist/js/tabler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
 
 <!-- Time zone cookie -->
 <script type="module">
@@ -12,15 +12,16 @@
 <script type="module">
   document.addEventListener("click", (event) => {
     if (!event.target.matches("[data-confirm]")) return
-    if (!window.confirm(event.target.dataset["confirm"])) event.preventDefault()
+    if (!confirm(event.target.dataset["confirm"])) event.preventDefault()
   })
 </script>
 
 <!-- Stimulus controllers -->
 <script type="module">
-  import { Application, Controller } from "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.1.0/dist/stimulus.min.js"
+  import { Application, Controller } from "https://cdn.jsdelivr.net/npm/stimulus@3.2.1/dist/stimulus.min.js"
   window.Stimulus = Application.start()
 
+  // Flash message
   Stimulus.register("flash-message", class extends Controller {
     connect() {
       new bootstrap.Toast(this.element).show()
