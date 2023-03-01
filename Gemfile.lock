@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    administration-zero (0.0.17)
+    administration-zero (0.0.18)
 
 GEM
   remote: https://rubygems.org/
