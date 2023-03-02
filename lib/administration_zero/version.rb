@@ -1,3 +1,3 @@
 module AdministrationZero
-  VERSION = "0.0.18"
+  VERSION = "1.0.0"
 end
