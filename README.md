@@ -22,22 +22,23 @@ The purpose of administration zero is to generate a pre-built administration pan
 bundle add administration-zero
 ```
 
-You'll need to create a model to be administrated, if you don't have one. for this example let's use the following:
-
-```
-rails generate model posts title:string body:text published:boolean
-```
-
 ## Usage
 
 ```
 rails generate admin:install
 ```
 
-Then run `bundle install` again
+Then run `bundle install`
 
-Then run `rails db:migrate db:seed`, you can access the admin panel in `/admin`, using `email: "admin@example.com", password: "Password9957"`
+Then run `rails db:migrate db:seed`
 
+You can access the admin panel in `/admin`, using `email: "admin@example.com", password: "Password9957"`
+
+You'll need to create a model to be administrated, if you don't have one. for this example let's use the following:
+
+```
+rails generate model posts title:string body:text published:boolean
+```
 
 Now you're ready to generate your admin scaffolds.
 
