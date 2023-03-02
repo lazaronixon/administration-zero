@@ -1,30 +1,21 @@
-<!-- Tabler Core -->
 <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
-
-<!-- Time zone cookie -->
-<script type="module">
-  import cookies from "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs"
-  const { timeZone } = new Intl.DateTimeFormat().resolvedOptions()
-  cookies.set("time_zone", timeZone, { expires: 365 })
-</script>
-
-<!-- Data confirm -->
-<script type="module">
-  document.addEventListener("click", (event) => {
-    if (!event.target.matches("[data-confirm]")) return
-    if (!confirm(event.target.dataset["confirm"])) event.preventDefault()
-  })
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@rails/ujs@7.0.4-2/lib/assets/compiled/rails-ujs.min.js"></script>
 
 <!-- Stimulus controllers -->
 <script type="module">
   import { Application, Controller } from "https://cdn.jsdelivr.net/npm/stimulus@3.2.1/dist/stimulus.min.js"
   window.Stimulus = Application.start()
 
-  // Flash message
   Stimulus.register("flash-message", class extends Controller {
     connect() {
       new bootstrap.Toast(this.element).show()
     }
   })
+</script>
+
+<!-- Time zone cookie -->
+<script type="module">
+  import Cookies from "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs"
+  const { timeZone } = new Intl.DateTimeFormat().resolvedOptions()
+  Cookies.set("time_zone", timeZone, { expires: 365 })
 </script>
