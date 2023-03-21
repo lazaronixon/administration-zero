@@ -6,7 +6,7 @@
 
   <%%= render "page_header_actions" do %>
     <%%= link_to "Edit <%= human_name.downcase %>", <%= edit_helper(type: :path) %>, class: "btn btn-primary" %>
-    <%%= button_to "Delete <%= human_name.downcase %>", <%= model_resource_name(prefix: "@") %>, method: :delete, "data-confirm": "Are you sure?", form_class: "d-inline", class: "btn btn-white" %>
+    <%%= link_to "Delete <%= human_name.downcase %>", <%= model_resource_name(prefix: "@") %>, class: "btn btn-white", data: { method: :delete, confirm: "Are you sure?" } %>
   <%% end %>
 <%% end %>
 

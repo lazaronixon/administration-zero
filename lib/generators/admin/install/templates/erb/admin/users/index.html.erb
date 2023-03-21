@@ -31,7 +31,7 @@
                 <td>
                   <%= link_to "View", user, class: "btn btn-white btn-sm" %>
                   <%= link_to "Edit", edit_admin_user_path(user), class: "btn btn-white btn-sm" %>
-                  <%= button_to "Delete", user, method: :delete, "data-confirm": "Are you sure?", form_class: "d-inline", class: "btn btn-white btn-sm" %>
+                  <%= link_to "Delete", user, class: "btn btn-white btn-sm", data: { method: :delete, confirm: "Are you sure?" } %>
                 </td>
               </tr>
             <% end %>
