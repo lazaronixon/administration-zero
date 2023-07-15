@@ -1,3 +1,3 @@
 class Admin::Current < ActiveSupport::CurrentAttributes
-  attribute :user; resets { Time.zone = nil }
+  attribute :user
 end

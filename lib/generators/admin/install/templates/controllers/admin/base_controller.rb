@@ -1,12 +1,12 @@
 class Admin::BaseController < ActionController::Base
   include Pagy::Backend
 
-  before_action :set_time_zone
+  around_action :set_time_zone
   before_action :authenticate
 
   private
     def set_time_zone
-      Time.zone = cookies[:time_zone]
+      Time.use_zone(cookies[:time_zone]) { yield }
     end
 
     def authenticate
