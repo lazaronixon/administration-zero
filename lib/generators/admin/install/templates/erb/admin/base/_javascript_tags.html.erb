@@ -1,21 +1,19 @@
-<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@rails/ujs@7.0.4-2/lib/assets/compiled/rails-ujs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta19/dist/js/tabler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@rails/ujs@7.0.6/lib/assets/compiled/rails-ujs.min.js"></script>
 
-<!-- Stimulus controllers -->
+<!-- Stimulus -->
 <script type="module">
-  import { Application, Controller } from "https://cdn.jsdelivr.net/npm/stimulus@3.2.1/dist/stimulus.min.js"
+  import { Application, Controller } from "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.2.1/+esm"
   window.Stimulus = Application.start()
 
   Stimulus.register("flash-message", class extends Controller {
-    connect() {
-      new bootstrap.Toast(this.element).show()
-    }
+    connect() { new bootstrap.Toast(this.element).show() }
   })
 </script>
 
-<!-- Time zone cookie -->
+<!-- Time zone -->
 <script type="module">
-  import Cookies from "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs"
+  import jsCookie from "https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/+esm"
   const { timeZone } = new Intl.DateTimeFormat().resolvedOptions()
-  Cookies.set("time_zone", timeZone, { expires: 365 })
+  jsCookie.set("time_zone", timeZone, { expires: 365 })
 </script>
