@@ -18,7 +18,7 @@
       <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true, class: "form-control" %>
       <%%= tag.div <%= singular_name %>.errors[:<%= attribute.column_name %>].first, class: "invalid-feedback" %>
     </div>
-<% elsif attribute.field_type == :check_box -%>
+<% elsif attribute.field_type == :checkbox -%>
     <%%= form.label :<%= attribute.column_name %>, class: "form-check-label col-md-3 col-form-label" %>
     <div class="col-md px-0">
       <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-check-input" %>
