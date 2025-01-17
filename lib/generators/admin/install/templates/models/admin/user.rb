@@ -7,4 +7,8 @@ class Admin::User < Admin::ApplicationRecord
   before_validation if: -> { email.present? } do
     self.email = email.downcase.strip
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[email created_at]
+  end
 end
