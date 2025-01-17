@@ -70,9 +70,7 @@ module Admin
 
       def create_test_files
         directory "test_unit/controllers", "test/controllers"
-        directory "test_unit/system", "test/system"
         copy_file "test_unit/test_helper.rb", "test/test_helper.rb", force: true
-        copy_file "test_unit/application_system_test_case.rb", "test/application_system_test_case.rb", force: true
       end
     end
   end
