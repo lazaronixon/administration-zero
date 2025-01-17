@@ -30,8 +30,8 @@ class Admin::PasswordResetsController < Admin::BaseController
 
   private
     def set_user
-      @user = Admin::User.find_signed!(params[:token], purpose: :password_reset)
-    rescue
+      @user = Admin::User.find_by_token_for!(:password_reset, params[:token])
+    rescue StandardError
       redirect_to new_admin_password_reset_path, alert: "That password reset link is invalid"
     end
 
