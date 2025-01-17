@@ -3,8 +3,7 @@ require "test_helper"
 class Admin::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = admin_users(:lazaro_nixon)
-    @sid = @user.signed_id(purpose: :password_reset, expires_in: 20.minutes)
-    @sid_exp = @user.signed_id(purpose: :password_reset, expires_in: 0.minutes)
+    @sid = @user.generate_token_for(:password_reset)
   end
 
   test "should get new" do
@@ -18,7 +17,7 @@ class Admin::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should send a password reset email" do
-    assert_enqueued_email_with Admin::UserMailer, :password_reset, args: { user: @user } do
+    assert_enqueued_email_with Admin::UserMailer, :password_reset, params: { user: @user } do
       post admin_password_reset_url, params: { email: @user.email }
     end
 
@@ -40,7 +39,8 @@ class Admin::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not update password with expired token" do
-    patch admin_password_reset_url, params: { token: @sid_exp, password: "Secret6*4*2*", password_confirmation: "Secret6*4*2*" }
+    travel 30.minutes
+    patch admin_password_reset_url, params: { token: @sid, password: "Secret6*4*2*", password_confirmation: "Secret6*4*2*" }
 
     assert_redirected_to new_admin_password_reset_url
     assert_equal "That password reset link is invalid", flash[:alert]
