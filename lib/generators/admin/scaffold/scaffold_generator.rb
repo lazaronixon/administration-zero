@@ -15,9 +15,7 @@ module Admin
         directory "erb", "app/views/admin/#{file_name.pluralize}"
 
         template "controller.rb", "app/controllers/admin/#{controller_file_name}_controller.rb"
-
         template "functional_test.rb", "test/controllers/admin/#{controller_file_name}_controller_test.rb"
-        template "system_test.rb",     "test/system/admin/#{file_name.pluralize}_test.rb"
       end
 
       def create_routes
