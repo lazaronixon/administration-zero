@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+## [1.0.7] - 2025-11-03
+- Fix system_test.rb not found
+
 ## [1.0.6] - 2025-01-17
 - Remove admin scaffold system test
 
