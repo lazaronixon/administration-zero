@@ -1,8 +1,6 @@
 require "pagy/extras/bootstrap"
 
 module Admin::ApplicationHelper
-  include Pagy::Frontend
-
   def title
     content_for(:title) || Rails.application.class.to_s.split("::").first
   end
