@@ -41,10 +41,10 @@
       <div class="card-footer d-flex align-items-center fs-5">
         <div class="d-none d-md-block">
           <div>Download: <%= link_to "CSV", admin_users_path(format: :csv, q: request.params[:q]) %></div>
-          <%== pagy_info(@pagy) %>
+          <%== @pagy.info_tag %>
         </div>
         <div class="ms-auto">
-          <%== pagy_bootstrap_nav(@pagy) %>
+          <%== @pagy.series_nav(:bootstrap) %>
         </div>
       </div>
     </div>

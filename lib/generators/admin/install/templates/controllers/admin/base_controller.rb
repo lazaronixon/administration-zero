@@ -1,5 +1,5 @@
 class Admin::BaseController < ActionController::Base
-  include Pagy::Backend
+  include Pagy::Method
 
   around_action :set_time_zone
   before_action :authenticate
